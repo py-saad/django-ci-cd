@@ -41,5 +41,5 @@ jobs:
         script: |
           cd django-ci-cd
           git pull
-          docker-compose build
-          docker-compose up -d
+          sudo docker-compose build
+          sudo docker-compose up -d
