@@ -39,3 +39,11 @@ jobs:
         username: ubuntu
         key: ${{ secrets.PRIVATE_KEY }}
         script: echo hello world > hello.txt
+
+    - name: Pull the latest code to the staging environment
+        run: ssh staging 'cd django-ci-cd && git pull'
+    
+    - name: Start containers
+        run: |
+          ssh staging 'cd django-ci-cd && docker-compose  build'
+          ssh staging 'cd django-ci-cd && docker-compose  up -d'

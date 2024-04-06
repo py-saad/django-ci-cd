@@ -10,12 +10,12 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
-    command: "./manage.py runserver 0.0.0.0:8000"
+    command: "./manage.py runserver 0.0.0.0:80"
     env_file:
       - ./docker/env.db
     container_name: app
     ports:
-      - "8000:8000"
+      - "80:80"
     volumes:
       - .:/opt/code
     depends_on:
