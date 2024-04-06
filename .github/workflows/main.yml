@@ -38,12 +38,9 @@ jobs:
         host: 16.171.4.117
         username: ubuntu
         key: ${{ secrets.PRIVATE_KEY }}
-        script: echo hello world > hello.txt
-
-    - name: Pull the latest code to the staging environment
-        run: cd django-ci-cd && git pull
-    
-    - name: Start containers
-        run: |
-          cd django-ci-cd && docker-compose  build
-          cd django-ci-cd && docker-compose  up -d
+        script: |
+          cd django-ci-cd
+          git pull
+          docker-compose down
+          docker-compose pull
+          docker-compose up -d
