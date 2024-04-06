@@ -33,5 +33,9 @@ jobs:
 
     steps:
     - name: Deploy to Production
-      run: |
-        echo "Deployed"
+      uses: appleboy/ssh-action@master
+      with:
+        host: 16.171.4.117
+        username: ubuntu
+        key: ${{ secrets.PRIVATE_KEY }}
+        script: echo hello world > hello.txt
